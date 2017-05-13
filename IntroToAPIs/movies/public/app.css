@@ -1,0 +1,14 @@
+body{
+    background: black;
+    color: cyan;
+    text-align: center;
+    width: 99%;
+}
+
+img{
+    height: 150px;
+}
+
+table{
+    margin: auto;
+}

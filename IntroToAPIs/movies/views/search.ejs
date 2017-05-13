@@ -1,0 +1,13 @@
+<% include partials/header %>
+
+<h1>Movie Search</h1>
+<hr>
+<div>Display up to the first 10 results for your Search term. Just enter your search and click the button below!</div>
+<br>
+<form method="get" action="/results">
+    <input type='text' name='search' placeholder='Movie Title' required></input>
+    <br>
+    <button>Find my movie!</button>
+</form>
+
+<% include partials/footer %>

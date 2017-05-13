@@ -1,0 +1,24 @@
+<% include partials/header %>
+
+<h1>Results</h1>
+<% if(movies["Response"] === "True"){ %>
+    <div>Movies containing "<%=search%>": <%=movies["totalResults"]%></div>
+    <hr>
+    <table>
+    <% movies["Search"].forEach(function(movie){ %>
+        <tr>
+            <td><img src="<%=movie["Poster"]%>"></img></td>
+            <td>&nbsp;&nbsp;&nbsp;<%=movie["Title"]%> - <%=movie["Year"]%></td>
+        </tr>
+    <% }); %>
+    </table>
+<% }else{ %>
+    <div>No movies found containing "<%= search %>"</div>
+<% } %>
+
+
+<hr>
+<form method="get" action="/search">
+    <button type="submit">New Search!</button>
+</form>
+<% include partials/footer %>
