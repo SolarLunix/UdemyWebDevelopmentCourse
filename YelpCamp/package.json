@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/SolarLunix/UdemyWebDevelopmentCourse/issues"
   },
-  "homepage": "https://github.com/SolarLunix/UdemyWebDevelopmentCourse#readme"
+  "homepage": "https://github.com/SolarLunix/UdemyWebDevelopmentCourse#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "request": "^2.81.0"
+  }
 }

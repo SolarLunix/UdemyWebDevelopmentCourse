@@ -1,0 +1,1 @@
+The YelpCamp App is made as part of the web dev bootcamp
