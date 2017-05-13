@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sound Game</title>
+	<link rel="stylesheet" href="Assets/SoundGame.css"></link>
+
+	<!--Scripts-->
+	<script type="text/javascript" src="Assets/lib/howler.min.js"></script>
+	<script type="text/javascript" src="Assets/lib/paper-full.min.js"></script>
+
+	<script type="text/paperscript" canvas="myCanvas">
+		var keyData = {
+			a: {
+				color: "rgb(0, 0, 180)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/bubbles.mp3']
+				})
+			},
+			b: {
+				color: "rgb(175, 13, 102)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/clay.mp3']
+				})
+			},
+			c: {
+				color: "rgb(146,248,70)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/confetti.mp3']
+				})
+			},
+			d: {
+				color: "rgb(255, 200, 47)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/corona.mp3']
+				})
+			},
+			e: {
+				color: "rgb(255,118,0)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/dotted-spiral.mp3']
+				})
+			},
+			f: {
+				color: "rgb(185,105,185)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/flash-1.mp3']
+				})
+			},
+			g: {
+				color: "rgb(235,235,222)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/flash-2.mp3']
+				})
+			},
+			h: {
+				color: "rgb(100,159,159)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/flash-3.mp3']
+				})
+			},
+			i: {
+				color: "rgb(255,255,0)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/glimmer.mp3']
+				})
+			},
+			j: {
+				color: "rgb(55,19,112)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/moon.mp3']
+				})
+			},
+			k: {
+				color: "rgb(255,255,150)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/pinwheel.mp3']
+				})
+			},
+			l: {
+				color: "rgb(202,62,94)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/piston-1.mp3']
+				})
+			},
+			m: {
+				color: "rgb(205,145,63)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/piston-2.mp3']
+				})
+			},
+			n: {
+				color: "rgb(12,75,100)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/piston-3.mp3']
+				})
+			},
+			o: {
+				color: "rgb(255,0,0)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/prism-1.mp3']
+				})
+			},
+			p: {
+				color: "rgb(175,155,50)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/prism-2.mp3']
+				})
+			},
+			q: {
+				color: "rgb(75,5,75)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/prism-3.mp3']
+				})
+			},
+			r: {
+				color: "rgb(37,70,25)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/splits.mp3']
+				})
+			},
+			s: {
+				color: "rgb(121,33,135)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/squiggle.mp3']
+				})
+			},
+			t: {
+				color: "rgb(83,140,208)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/strike.mp3']
+				})
+			},
+			u: {
+				color: "rgb(0,154,37)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/suspension.mp3']
+				})
+			},
+			v: {
+				color: "rgb(178,220,205)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/timer.mp3']
+				})
+			},
+			w: {
+				color: "rgb(255,152,213)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/ufo.mp3']
+				})
+			},
+			x: {
+				color: "rgb(0,0,74)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/veil.mp3']
+				})
+			},
+			y: {
+				color: "rgb(175,200,74)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/wipe.mp3']
+				})
+			},
+			z: {
+				color: "rgb(63,25,12)",
+				sound: new Howl({
+					src: ['Assets/lib/sounds/zig-zag.mp3']
+				})
+			}
+		}
+
+		var stars = [];
+
+		function onKeyDown(event) {
+
+			if(keyData[event.key]){
+				var maxPoint = new Point(view.size.width, view.size.height);
+				var rndPoint = Point.random();
+				var point = maxPoint * rndPoint;
+				var star = new Path.Star(point, 5, 150, 100);
+				star.fillColor = keyData[event.key].color;
+				keyData[event.key].sound.play();
+
+				stars.push(star);
+			}
+		}
+
+		function onFrame(event){
+			for(var i = 0; i < stars.length; i++){
+				stars[i].fillColor.hue += 1;
+				stars[i].scale(.9);
+				if(stars[i].ara < 1){
+					stars[i].remove();
+					stars.splice(i,1);
+				}
+			}
+		}
+	</script>
+
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>

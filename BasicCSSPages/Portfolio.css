@@ -1,0 +1,16 @@
+img {
+	width: 30%;
+	float: left;
+	margin: 1.66%;
+}
+
+h1{
+	margin-left: 1.66%;
+	font-size: 23px;
+	font-family: "Arial";
+	font-weight: 800;
+	text-transform: uppercase;
+	width: 62.33%;
+	border-bottom: 2px solid #f1f1f1;
+	padding-bottom: 20px;
+}

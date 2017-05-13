@@ -1,0 +1,20 @@
+li{
+	border: 1px dashed blue;
+}
+
+#important{
+	color: red;
+	background: yellow;
+}
+
+.done {
+	text-decoration: line-through;
+}
+
+body{
+	background: purple
+}
+
+*{
+	font-family: "Courier New";
+}

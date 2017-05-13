@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form Demo</title>
+</head>
+<body>
+<h1>Login</h1>
+
+<!-- If there is no action set it will just refresh the page -->
+
+<!-- it is really form action="website/server" method="get/post" -->
+<form>
+
+	<p>
+		<lable for="Email">Email:</lable>
+		<input id ="Email" name="Email" type="email" placeholder="Email">
+		<lable for="username">Username:</lable>
+		<input id ="username" name="username" type="text" placeholder="username">
+		<lable for="password">Password:</lable>
+		<input id ="password" name= "password" type="password" placeholder="password">
+
+		<input type="submit">
+	</p>
+
+	<p>Do you prefer cats or dogs?</p>
+
+	<p>
+		<input name="petChoice" id="cat" type="radio" value="cat"><lable for="cat">Cats</lable>
+		<input name="petChoice" id="dog" type="radio" value="dog"><lable for="dog">Dogs</lable>
+	</p>
+
+	<p>What is your favourite colour?</p>
+	<p>
+		<select name="color">
+			<option value="red">>:(</option>
+			<option value="blue">:'(</option>
+			<option value="yellow">:D</option>
+		</select>
+	</p>
+
+	<button>GO!</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+body {
+	background-color: black;
+	color: blue;
+	text-align: center;
+}
+
+div {
+	width: 500px;
+	background-color: black;
+	margin: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}

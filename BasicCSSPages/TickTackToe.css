@@ -1,0 +1,25 @@
+h1{
+	margin: 0 auto;
+}
+
+table{
+	margin: 0 auto;
+}
+
+td{
+	padding: 50px;
+}
+
+.center{
+	border: solid 2px black;
+}
+
+.lr{
+	border-right: solid 2px black;
+	border-left: solid 2px black;
+}
+
+.tb{
+	border-top: solid 2px black;
+	border-bottom: solid 2px black;
+}

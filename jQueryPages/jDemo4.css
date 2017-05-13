@@ -1,0 +1,12 @@
+.clicked {
+	background-color: black;
+	color: blue;
+}
+
+.awesome {
+	color: red;
+}
+
+body {
+	text-align: center;
+}

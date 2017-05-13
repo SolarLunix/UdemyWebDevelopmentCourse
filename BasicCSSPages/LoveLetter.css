@@ -1,0 +1,31 @@
+body{
+	font-family: 'Dancing Script', cursive;
+	font-size: 20px;
+	background: rgb(50,255,255);
+}
+
+div::first-letter{
+	font-size: 200%;
+}
+
+div{
+	width: 500px;
+	margin: 10px auto;
+	padding: 40px;
+	border: dashed 2px black;
+	background-image: url(http://www.zingerbug.com/Backgrounds/background_images/peach_colored_construction_paper_seamless.jpg);
+}
+
+p{
+	text-indent: 50px;
+}
+
+.sig{
+	text-indent: 300px;
+}
+
+.date{
+	text-indent: 0px;
+	padding-top: 20px;
+	text-align: right;
+}

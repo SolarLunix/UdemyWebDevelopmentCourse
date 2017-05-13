@@ -1,0 +1,31 @@
+body{
+	background: url(http://2s6r8389mtf37nwo33o26ug155p.wpengine.netdna-cdn.com/wp-content/gallery/test_1/luna-in-hand.jpg);
+	background-size: cover;
+	background-position: center;
+	font-family: Lato;
+	color: white;
+}
+
+html{
+	height: 100%;
+}
+
+#content {
+	text-align: center;
+	padding-top: 20%;
+
+	text-shadow: 0px 4px 3px rbga(0,0,0,0.4),
+				 0px 8px 13px rbga(0,0,0,0.1),
+				 0px 18px 23px rbga(0,0,0,0.1);
+}
+
+h1{
+	font-size: 5em;
+	font-weight: 700;
+}
+
+hr{
+	width: 400px;
+	border-top: 1px solid #f8f8f8;
+	border-bottom: 1px solid rbga(0,0,0,0.2);
+}
