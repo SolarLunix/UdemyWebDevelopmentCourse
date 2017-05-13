@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Posts</title>
+        <link rel="stylesheet" href="app.css">
+    </head>
+    <body>
+        <h1>Welcome to the Posts Page</h1>
+        <table>
+            <tr>
+                <th><strong>Author</strong></th>
+                <th>Post Title</th>
+            </tr>
+            <% posts.forEach(function(post){ %>
+                <tr>
+                    <td><strong><%=post["author"]%></strong></td>
+                    <td><%=post["title"]%></td>
+                </tr>
+            <% }); %>
+        </table>
+    </body>
+</html>

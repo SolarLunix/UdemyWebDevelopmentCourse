@@ -1,0 +1,14 @@
+{
+  "name": "expressapp",
+  "version": "1.0.0",
+  "description": "First App using express",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Melissa Melaugh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+  }
+}
