@@ -34,8 +34,11 @@ app.get('/campgrounds/new', function(req, res) {
 
 // Post requests
 app.post('/campgrounds', function(req, res){
-   
-   res.redirect('/campgrounds'); 
+    var name = req.body.name;
+    var img = req.body.img;
+    var newCamp = {"name": name, "img": img};
+    campgrounds.push(newCamp);
+    res.redirect('/campgrounds'); 
 });
 
 // Invalid URL - Make sure this goes last!

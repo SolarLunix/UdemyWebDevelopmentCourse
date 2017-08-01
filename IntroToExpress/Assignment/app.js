@@ -8,7 +8,7 @@ app.get("/", function(req, res){
 
 // Animal voices!
 app.get("/speak/:animal", function(req, res){
-    var animal = req.params.animal.toLowwerCase();
+    var animal = req.params.animal.toLowerCase();
     var sounds = {
         pig: "OINK",
         cow: "MOO",
@@ -17,8 +17,13 @@ app.get("/speak/:animal", function(req, res){
         fox: "YA CHA CHA CHA CHAF CHAF CHAF CHAF CHAF"
     }
     
-    var response = "The " + animal + " says, \"" + sounds[animal] + "!\"";
-    res.send(response);
+    if (sounds.hasOwnProperty(animal)) {
+        var response = "The " + animal + " says, \"" + sounds[animal] + "!\"";
+    }else{
+        var response = "I don't know what the " + animal + " says!";
+    }
+    
+    res.render(response);
 });
 
 //The repeater
