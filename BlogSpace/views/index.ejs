@@ -1,9 +1,11 @@
 <% include partials/header %>
 
 <h1 class="centered">Blogs</h1>
-        
-<% blogs.forEach(function(blog){ %>
-    <div><%= blog.title %></div>
-<% }); %>
+   
+<div class="ui container">     
+    <% blogs.forEach(function(blog){ %>
+        <div><%= blog.title %></div>
+    <% }); %>
+</div>
 
 <% include partials/footer %>
