@@ -1,0 +1,9 @@
+<% include partials/header %>
+
+<h1 class="centered">Blogs</h1>
+        
+<% blogs.forEach(function(blog){ %>
+    <div><%= blog.title %></div>
+<% }); %>
+
+<% include partials/footer %>
