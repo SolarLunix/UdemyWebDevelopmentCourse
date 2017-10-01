@@ -1,44 +1,70 @@
-var express = require("express");
-var request = require('request');
-var bodyParser = require('body-parser');
+var express     = require("express"), 
+    request     = require('request'),
+    bodyParser  = require('body-parser'),
+    mongoose    = require('mongoose');
 
+// ENVIRONMENT SET UP
 var app = express();
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
-var campgrounds = [
-    {'name': 'Lazy K Campground',
-        'img': 'http://images.clipartpanda.com/gunfire-clipart-camping-clip-art-5.gif'
-    },
-    {'name': 'New Castle Lake',
-        'img': 'http://watchwrestling.in/wp-content/uploads/2016/05/latest.png'
-    },
-    {'name': 'Brokeback Mountain',
-        'img': 'http://ginazammit.files.wordpress.com/2012/06/camp.jpg'
-    }];
+mongoose.connect("mongodb://localhost/yelp_camp");
+
+// SCHEMA SET UP
+var campSchema = new mongoose.Schema({
+    name: String,
+    img: String,
+    desc: String
+});
+
+var Camp = mongoose.model("Camp", campSchema);
 
 // Get Requests
 app.get('/', function(req, res) {
-   res.render('index'); 
+   res.render('home'); 
 });
 
 app.get('/campgrounds', function(req, res) {
-    res.render('campgrounds', {campgrounds:campgrounds});
+    Camp.find({}, function(err, camps){
+        if(err){
+            console.log(err);
+            res.redirect('/');
+        }else{
+            res.render('index', {campgrounds:camps});
+        }
+    });
 });
 
 app.get('/campgrounds/new', function(req, res) {
-   res.render('campgroundsNew') ;
+    res.render('new') ;
+});
+
+app.get('/campgrounds/:id', function(req, res) {
+    Camp.findById(req.params.id, function(err, foundCamp){
+       if(err){
+           console.log(err);
+           res.redirect('/error');
+       }else{
+           res.render('show', {camp: foundCamp});
+       }
+    });
 });
 
 // Post requests
 app.post('/campgrounds', function(req, res){
     var name = req.body.name;
     var img = req.body.img;
-    var newCamp = {"name": name, "img": img};
-    campgrounds.push(newCamp);
-    res.redirect('/campgrounds'); 
+    var desc = req.body.desc;
+    Camp.create({"name": name, "img": img, "desc": desc}, function(err, camp){
+        if(err){
+            console.log(err);
+            res.redirect('/campgrounds/new');
+        }else{
+            res.redirect('/campgrounds');
+        }
+    });
 });
 
 // Invalid URL - Make sure this goes last!
