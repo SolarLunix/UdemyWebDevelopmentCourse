@@ -1,9 +1,17 @@
-i.icon{
-    font-size: 2em;
+.blog-image{
+    max-width: 300px;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.centered{
+.date{
+    font-size: .75em;
     text-align: center;
+}
+
+i.icon{
+    font-size: 2em;
 }
 
 .i-image{
