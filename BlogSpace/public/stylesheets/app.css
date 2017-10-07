@@ -10,10 +10,22 @@
     text-align: center;
 }
 
+.float-r{
+    float: left;
+}
+
 i.icon{
     font-size: 2em;
 }
 
 .i-image{
     height: 150px;
+}
+
+.padding{
+  padding-top: 1em;
+}
+
+.right{
+  text-align: right;
 }

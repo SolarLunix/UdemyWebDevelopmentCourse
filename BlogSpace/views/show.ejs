@@ -9,6 +9,18 @@
             <div class="description"><%-blog.body%></div>
         </div>
     </div>
+    
+    <form action='/blogs/<%=blog._id%>/edit' class="ui inverted form" method="GET">
+        <div class="padding">
+            <button class="ui big inverted teal basic button">EDIT</button>
+        </div>
+    </form>
+    
+    <form action='/blogs/<%=blog._id%>?_method=DELETE' class="ui inverted form" method="POST">
+        <div class="padding right">
+            <button class="ui big inverted red basic button">DELETE</button>
+        </div>
+    </form>
 </div>
 
 <% include partials/footer %>

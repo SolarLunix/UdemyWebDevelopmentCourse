@@ -69,8 +69,7 @@ app.post('/campgrounds', function(req, res){
 
 // Invalid URL - Make sure this goes last!
 app.get("*", function(req, res){
-    res.send("You have been redirected here after an incorrect url," +
-        "but you're still amazing!")
+    res.redirect("/");
 });
 
 // Standard listener
