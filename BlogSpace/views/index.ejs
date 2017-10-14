@@ -1,16 +1,24 @@
 <% include partials/header %>
    
-<div class="ui container">  
+<div class="ui main inverted text container segment">  
     <h1 class="ui huge header centered">Blogs</h1>
+    <hr>
     
-    <% blogs.forEach(function(blog){ %>
-        <div>
-            <img class="i-image" src="<%= blog.image %>"></img>
-            <h2><%= blog.title %></h2>
-            <p><%= blog.body.substring(0, 100) %> . . .</p>
-            <a href="blogs/<%= blog._id %>"> View More</a>
-        </div>
-    <% }); %>
+    <div class="ui divided items">
+        <% blogs.forEach(function(blog){ %>
+            <div class="item ui grid">
+                <div class="six wide column">
+                    <img class="i-image" src="<%= blog.image %>"></img>
+                </div>
+                <div class="ten wide column">
+                    <div class="ui centered"><a href="blogs/<%= blog._id %>"><h2><%= blog.title %></h2></a></div>
+                    <div class="date"></span><%=blog.date.toDateString()%></div>
+                    <div><%- blog.body.substring(0, 100) %> . . .</div>
+                    <div class="padding"><a class="ui big inverted teal basic button" href="blogs/<%= blog._id %>">View More</a></div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
 </div>
 
 <% include partials/footer %>

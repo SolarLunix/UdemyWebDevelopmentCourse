@@ -5,17 +5,30 @@
     margin-right: auto;
 }
 
+body{
+    background-color: #f0d8ff;
+}
+
 .date{
     font-size: .75em;
     text-align: center;
 }
 
-i.icon{
+.form-button{
+    display: inline;
+}
+
+h2{
+    text-align: center;
+}
+
+.icon{
     font-size: 2em;
 }
 
 .i-image{
     height: 150px;
+    float: right;
 }
 
 .padding{
