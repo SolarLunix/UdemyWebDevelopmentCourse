@@ -22,20 +22,19 @@ var Post = mongoose.model("Post", postSchema);
 var userSchema = mongoose.Schema({
    email: String,
    name: String,
-   posts: [postSchema]
+   posts: [
+       {
+           type: mongoose.Schema.Types.ObjectId,
+           ref: "Post"
+       }]
 });
 var User = mongoose.model("User", userSchema);
 
 /*
-//HOW TO MAKE A USER WITH A POST 
+//CREATE USER
 var newUser = new User({
     email: "blingbling@gmail.com",
     name: "Tom"
-});
-
-newUser.posts.push({
-    title: "Treat yo Self",
-    content: "Doesn't matter how much money you have, take at least a day a month and TREAT YO' SELF BOO!"
 });
 
 newUser.save(function(err, user){
@@ -43,6 +42,45 @@ newUser.save(function(err, user){
         console.log(err);
     } else {
         console.log(user);
+    }
+});
+
+//ANOTHER WAY:
+User.create({
+    email: "GovernmentIsUseless@gmail.com",
+    name: "Ron"
+}, function(err, user){
+    if(err){
+        console.log(err);
+    } else {
+        console.log(user);
+    }
+});
+*/
+
+/*
+Post.create({
+    title: "Treat Yo' Self",
+    content: "Doesn't matter how much money you have, take at least a day a month and TREAT YO' SELF BOO! Debt doesn't follow you to the grave!"
+}, function(err, post){
+    if(err){
+        console.log(err);
+    } else {
+        User.findOne({name: "Tom"}, function(err, user){
+            if(err){
+                console.log(err);
+            }else{
+                user.posts.push(post);
+            }
+            
+            user.save(function(err, user){
+                if(err){
+                    console.log(err);
+                } else {
+                    console.log(user);
+                }
+            });
+        });
     }
 });
 */
@@ -93,4 +131,12 @@ User.findOne({name:"Tom"}, function(err, user){
    }
 });
 */
+
+User.findOne({name:"Tom"}).populate("posts").exec(function(err, user){
+    if(err){
+        console.log(err);
+    } else {
+        console.log(user);
+    }
+});
 
