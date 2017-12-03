@@ -1,7 +1,9 @@
 var express     = require("express"), 
     request     = require('request'),
     bodyParser  = require('body-parser'),
-    mongoose    = require('mongoose');
+    mongoose    = require('mongoose'),
+    Post        = require('./models/posts'),
+    User        = require('./models/users');
 
 // ENVIRONMENT SET UP
 var app = express();
@@ -12,23 +14,44 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 mongoose.connect("mongodb://localhost/references_");
 
-// SCHEMAS
-var postSchema = mongoose.Schema({
-    title: String,
-    content: String
-});
-var Post = mongoose.model("Post", postSchema);
+//Test required ./models
 
-var userSchema = mongoose.Schema({
-   email: String,
-   name: String,
-   posts: [
-       {
-           type: mongoose.Schema.Types.ObjectId,
-           ref: "Post"
-       }]
+User.create({
+    email: "GovernmentIsAmazing@gmail.com",
+    name: "Leslie"
+}, function(err, user){
+    if(err){
+        console.log(err);
+    } else {
+        console.log(user);
+    }
 });
-var User = mongoose.model("User", userSchema);
+
+
+Post.create({
+    title: "Parks are Amazing",
+    content: "You have to go out to your local park today! Watch out for the possums though!"
+}, function(err, post){
+    if(err){
+        console.log(err);
+    } else {
+        User.findOne({name: "Leslie"}, function(err, user){
+            if(err){
+                console.log(err);
+            }else{
+                user.posts.push(post);
+            }
+            
+            user.save(function(err, user){
+                if(err){
+                    console.log(err);
+                } else {
+                    console.log(user);
+                }
+            });
+        });
+    }
+});
 
 /*
 //CREATE USER
@@ -132,6 +155,7 @@ User.findOne({name:"Tom"}, function(err, user){
 });
 */
 
+/*
 User.findOne({name:"Tom"}).populate("posts").exec(function(err, user){
     if(err){
         console.log(err);
@@ -139,4 +163,4 @@ User.findOne({name:"Tom"}).populate("posts").exec(function(err, user){
         console.log(user);
     }
 });
-
+*/
