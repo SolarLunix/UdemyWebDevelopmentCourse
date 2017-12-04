@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <h1>New Comment on <%=camp.name%> </h1>
+        <div class="newcampform">
+            <form action="/campgrounds/<%=camp._id%>/comments" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="comment[author]" placeholder="Your Name" required></input>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="comment[text]" placeholder="Your Comment" required></input>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-default btn-block">Submit</button>
+                </div>
+            </form>
+        </div>
+        <br>
+        <a href="/campgrounds/<%=camp._id%>">Return to Campground</a>
+    </div>
+</div>
+
+<% include ../partials/footer %>
