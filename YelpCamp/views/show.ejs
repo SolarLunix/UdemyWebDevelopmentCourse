@@ -1,11 +1,26 @@
 <% include partials/header %>
 
-<h1><%=camp.name%></h1>
+<h1><%= camp.name %></h1>
 
-<div align="center">
-    <img src="<%=camp.img%>"></img>
-
-    <div><%=camp.desc%></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="thumbnail">
+                <img src="<%= camp.img %>"></img>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div><br><br><%= camp.desc %></div>
+        </div>
+        <% camp.comments.forEach(function(comment){ %>
+            <div class="col-md-12">
+                <div class="thumbnail">
+                    <p><strong><%= comment.author %></strong></p>
+                    <p><%= comment.text %></p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
 </div>
 
 <% include partials/footer %>

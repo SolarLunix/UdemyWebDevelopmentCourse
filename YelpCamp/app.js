@@ -1,7 +1,10 @@
 var express     = require("express"), 
     request     = require('request'),
     bodyParser  = require('body-parser'),
-    mongoose    = require('mongoose');
+    mongoose    = require('mongoose'),
+    Camp        = require('./models/camps'),
+    Comments    = require('./models/comments'),
+    seedDB      = require('./seeds');
 
 // ENVIRONMENT SET UP
 var app = express();
@@ -12,14 +15,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 mongoose.connect("mongodb://localhost/yelp_camp");
 
-// SCHEMA SET UP
-var campSchema = new mongoose.Schema({
-    name: String,
-    img: String,
-    desc: String
-});
-
-var Camp = mongoose.model("Camp", campSchema);
+//Seed the Database
+seedDB();
 
 // Get Requests
 app.get('/', function(req, res) {
@@ -42,12 +39,12 @@ app.get('/campgrounds/new', function(req, res) {
 });
 
 app.get('/campgrounds/:id', function(req, res) {
-    Camp.findById(req.params.id, function(err, foundCamp){
+    Camp.findById(req.params.id).populate("comments").exec(function(err, foundCamp){
        if(err){
            console.log(err);
            res.redirect('/error');
        }else{
-           res.render('show', {camp: foundCamp});
+           res.render('show', {camp: foundCamp, Comments: Comments});
        }
     });
 });
